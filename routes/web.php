@@ -20,3 +20,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('dashboard', function(){
+        return view('admin.dashboard.dashboard');
+    })->name('admin.dashboard');
+
+    Route::get('managers', function(){
+        return view('admin.manager.index');
+    })->name('admin.managers');
+    Route::get('managers/create', function(){
+        return view('admin.manager.create');
+    })->name('admin.managers.create');
+});
